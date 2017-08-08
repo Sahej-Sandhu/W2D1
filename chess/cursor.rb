@@ -101,19 +101,14 @@ class Cursor
   def update_pos(diff)
 
     potential_position = @cursor_pos.dup
-    puts potential_position
 
     potential_position[0] += diff[0]
     potential_position[1] += diff[1] # create potential new position
 
-    puts potential_position
-    puts @board.in_bounds?(potential_position)
-
-    p @cursor_pos
     if @board.in_bounds?(potential_position)
       @cursor_pos = potential_position
     end
-    p @cursor_pos
+
     # Assign cursor_pos to potential_position if location in bounds
 
     # puts @cursor_pos

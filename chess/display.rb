@@ -20,15 +20,19 @@ class Display
       display[row_index].each_index do |col_index| #for each column
         if display[row_index][col_index].class == NullPiece
           if [row_index,col_index] == @cursor.cursor_pos
-            output += "N".colorize(:background => :red) #colorize this one
+            output += " N ".colorize(:background => :red) #colorize this one
+          elsif (row_index + col_index).even?
+            output += " N ".colorize(:background => :blue)
           else
-            output += "N"
+            output += " N ".colorize(:background => :grey)
           end
         else
           if [row_index,col_index] == @cursor.cursor_pos
-            output += "P".colorize(:background => :red) #colorize this one
+            output += " P ".colorize(:background => :red) #colorize this one
+          elsif (row_index + col_index).even?
+            output += " P ".colorize(:background => :blue)
           else
-            output += "P"
+            output += " P ".colorize(:background => :grey)
           end
         end
       end
@@ -42,7 +46,7 @@ class Display
     while true
       render
       @cursor.get_input
-      # system "clear"
+      system "clear"
     end
   end
 
